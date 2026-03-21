@@ -11,16 +11,20 @@ For example, a flight gets summarized as:
 
 ## Usage
 
-### Web app (Streamlit)
+### Web site
+
+https://skyscanner-oneliner.streamlit.app/
+
+1. Copy the **whole text** of a Skyscanner flight page (Ctrl+A, Ctrl+C)
+1. Paste in the box
+1. Click **Summary**
+1. The result is copied to the clipboard
+
+### Local Web app
 
 ```bash
 uv run streamlit run app.py
 ```
-
-1. Copy the **whole text** of a Skyscanner flight page (Ctrl+A, Ctrl+C)
-2. Paste in the box
-3. Click **Summary**
-4. The result is copied to the clipboard
 
 ### CLI
 

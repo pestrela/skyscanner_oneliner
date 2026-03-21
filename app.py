@@ -8,6 +8,7 @@ from oneliner.skyscanner_parser import parse_text
 def help():
     #demo_url="https://www.skyscanner.pt/transporte/voos/fao/cur/260630/260708/config/11469-2606302010--31915,-32540-2-10807-2607011020%7C10807-2607081815--32540,-31915-2-11469-2607091655"
     demo_url="https://www.skyscanner.pt/transport/flights/fao/ams/270308/270310/config/11469-2703080605--31781-1-9451-2703081250%7C9451-2703101750--31781-1-11469-2703102350?"
+    github_url="https://github.com/pestrela/skyscanner_oneliner"
 
     ret = f"""
 This tool summarizes a Skyscanner flight to simple one-liners
@@ -20,17 +21,19 @@ For example, [this flight]({demo_url}) gets summarized neatly as:
 ```
 
 To use this tool:
-1. Copy the **whole text** of a flight to the clipboard (Ctrl+A, Ctrl+C)
-2. Paste in the box
-3. Click **Summary**
-4. The result is copied back to the clipboard
+  1. Copy the **whole text** of a flight to the clipboard (Ctrl+A, Ctrl+C)
+  1. Paste in the box
+  1. Click **Summary**
+  1. The result is copied back to the clipboard
+
+[Github Home]({github_url})
 """
     return ret
 
 ##########  
 ########## 
 
-st.set_page_config(page_title="✈️ OneLiner", page_icon="✈️")
+st.set_page_config(page_title="OneLiner", page_icon="✈️")
 
 #st.markdown("<style>textarea { font-family: monospace !important; font-size: 12px !important; }</style>", unsafe_allow_html=True)
 st.markdown("<style>textarea { font-family: monospace !important;  }</style>", unsafe_allow_html=True)
