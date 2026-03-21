@@ -2,6 +2,8 @@ import json
 
 import streamlit as st
 
+st.set_page_config(page_title="✈️ OneLiner")
+
 from oneliner.skyscanner_parser import parse_text
 
 def help():
@@ -28,6 +30,7 @@ To use this tool:
 
 
 #st.markdown("<style>textarea { font-family: monospace !important; font-size: 12px !important; }</style>", unsafe_allow_html=True)
+st.markdown("<style>textarea { font-family: monospace !important;  }</style>", unsafe_allow_html=True)
 st.title("SkyScanner Flight Summary")
 st.write("Paste the Skyscanner flight page text below, then click **Summary**.")
 
