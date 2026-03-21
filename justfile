@@ -18,4 +18,6 @@ streamlit:
 
 claude_resume:
     claude --resume "skyscanner-flight-summarizer"
-    
+
+docs:
+    uv run python scripts/serve_docs.py
