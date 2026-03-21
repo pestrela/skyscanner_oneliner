@@ -1,10 +1,9 @@
 import json
-
 import streamlit as st
-
-st.set_page_config(page_title="✈️ OneLiner")
-
 from oneliner.skyscanner_parser import parse_text
+
+
+
 
 def help():
     #demo_url="https://www.skyscanner.pt/transporte/voos/fao/cur/260630/260708/config/11469-2606302010--31915,-32540-2-10807-2607011020%7C10807-2607081815--32540,-31915-2-11469-2607091655"
@@ -28,11 +27,15 @@ To use this tool:
 """
     return ret
 
+##########  
+########## 
+
+st.set_page_config(page_title="✈️ OneLiner", page_icon="✈️")
 
 #st.markdown("<style>textarea { font-family: monospace !important; font-size: 12px !important; }</style>", unsafe_allow_html=True)
 st.markdown("<style>textarea { font-family: monospace !important;  }</style>", unsafe_allow_html=True)
-st.title("SkyScanner Flight Summary")
-st.write("Paste the Skyscanner flight page text below, then click **Summary**.")
+st.title("SkyScanner OneLiner ✈️")
+st.write("Paste the whole text of a flight page below, then click **Summary**.")
 
 
 
@@ -44,7 +47,7 @@ if st.session_state.pop("pending_clear", False):
 
 text = st.text_area("Flight page text", height=150, label_visibility="collapsed", key="text")
 
-col1, col2, _, col3 = st.columns([1, 1, 3, 1])
+col1, col2, _, col3, __ = st.columns([1, 1, 2, 1, 1])
 with col1:
     parse_clicked = st.button("Summary", type="primary")
 with col2:
@@ -52,7 +55,6 @@ with col2:
         st.session_state["pending_clear"] = True
         st.rerun()
 with col3:
-    st.markdown("<style>div[data-testid='stColumn']:last-child { align-items: flex-end !important; }</style>", unsafe_allow_html=True)
     with st.popover("Help"):
         st.markdown(help())
 
