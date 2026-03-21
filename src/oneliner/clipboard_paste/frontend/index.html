@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; font-family: sans-serif; }
+  #paste-area {
+    width: 100%;
+    height: 52px;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 13px;
+    color: #888;
+    resize: none;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  #paste-area:focus { border-color: #f63366; outline: none; color: #333; }
+</style>
+</head>
+<body>
+<textarea id="paste-area" placeholder="Press Ctrl+V to paste…"></textarea>
+<script>
+function send(type, data) {
+  window.parent.postMessage(Object.assign({ isStreamlitMessage: true, type }, data), "*");
+}
+
+window.addEventListener("load", function () {
+  send("streamlit:componentReady", { apiVersion: 1 });
+  send("streamlit:setFrameHeight", { height: 60 });
+  document.getElementById("paste-area").focus();
+});
+
+document.getElementById("paste-area").addEventListener("paste", function (e) {
+  const text = e.clipboardData.getData("text");
+  send("streamlit:setComponentValue", { value: text, dataType: "json" });
+  e.preventDefault();
+});
+</script>
+</body>
+</html>
