@@ -283,14 +283,18 @@ def parse_text(text: str) -> list[str]:
 
     outbound_match = re.search(r"Voo de ida", text)
     return_match = re.search(r"Regresso", text)
-    if not outbound_match or not return_match:
-        raise ValueError("Could not find 'Voo de ida' or 'Regresso' sections")
+    if not outbound_match:
+        raise ValueError("Could not find 'Voo de ida' section")
 
-    outbound_text = text[outbound_match.start():return_match.start()]
-    return_text = text[return_match.start():]
+    sections = []
+    if return_match:
+        sections.append(text[outbound_match.start():return_match.start()])
+        sections.append(text[return_match.start():])
+    else:
+        sections.append(text[outbound_match.start():])
 
     legs_data = []
-    for section in (outbound_text, return_text):
+    for section in sections:
         date_str = _extract_date(section)
         detail_match = re.search(r"^Partida de ", section, re.MULTILINE)
         detail_section = section[detail_match.start():] if detail_match else section
